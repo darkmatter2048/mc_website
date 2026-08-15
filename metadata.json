@@ -1,0 +1,6 @@
+{
+  "name": "MemeCapture",
+  "description": "MemeCapture 官方网站 - 精美简约可爱的表情包截屏与GIF动图制作神器，开源免费、即截即用",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
