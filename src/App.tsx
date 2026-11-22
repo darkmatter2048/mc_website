@@ -3,8 +3,27 @@ import { Download, Github } from 'lucide-react';
 import { DownloadModal } from './components/DownloadModal';
 import { Footer } from './components/Footer';
 
+const QUARK_DOWNLOAD_URL = 'https://pan.quark.cn/s/eda5e9363a48';
+
+function isMobileDevice(): boolean {
+  if (typeof navigator === 'undefined') return false;
+
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
+}
+
 export default function App() {
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+
+  const handleDownload = () => {
+    if (isMobileDevice()) {
+      window.location.assign(QUARK_DOWNLOAD_URL);
+      return;
+    }
+
+    setDownloadModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FFFDF5] text-[#2D3436] antialiased relative overflow-hidden">
@@ -36,7 +55,7 @@ export default function App() {
           {/* Download button with hover QR bubble */}
           <div className="relative group">
             <button
-              onClick={() => setDownloadModalOpen(true)}
+              onClick={handleDownload}
               id="btn-download"
               className="flex items-center gap-2 px-8 py-3.5 bg-[#FF85A1] hover:bg-[#ff7092] text-white font-bold rounded-full shadow-[0_10px_20px_rgba(255,133,161,0.35)] hover:scale-105 active:scale-95 transition-all"
             >
